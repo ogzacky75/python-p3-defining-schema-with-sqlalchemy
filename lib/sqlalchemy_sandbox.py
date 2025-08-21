@@ -2,11 +2,8 @@
 
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.orm import declarative_base
-from sqlalchemy import create_engine
 
 Base = declarative_base()
-engine = create_engine('sqlite:///students.db')
-Base.metadata.create_all(engine)
 
 class Student(Base):
     __tablename__ = 'students'
@@ -14,5 +11,10 @@ class Student(Base):
     id = Column(Integer(), primary_key=True)
     name = Column(String())
 
+#engine = create_engine('sqlite:///students.db')
+
+#Base.metadata.create_all(engine)
+
 if __name__ == '__main__':
-    pass
+    engine = create_engine('sqlite:///students.db')
+    Base.metadata.create_all(engine)
